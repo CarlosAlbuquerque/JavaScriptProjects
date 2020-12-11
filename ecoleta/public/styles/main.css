@@ -1,0 +1,36 @@
+    :root { /* root serve para definir variaveis*/
+        --title-color: #322153; /* isso é uma variavel de color, caso eu queria usar essa cor so chamar ela*/
+        --primary-color: #34cb79;
+        --color-form : #f0f0f5;
+    }
+
+    * { /* o * pega todos os elementos*/
+        margin: 0;
+        padding 0;
+        box-sizing: border-box;/*largura da caixa vai ser do tamanho da borda*/
+    }
+
+    html {
+        font-family: Roboto, sans-serif;
+    }
+
+    body{
+        background: #f0f0f5;
+        -webkit-font-smoothing: antialiased; /* fonte se apresenta mais gostosa de se ver */
+    }
+
+    a{
+        text-decoration: none;/*tira decoração do texto, a linhazinha que fica embaixo da frase*/
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        font-family: 'Ubuntu', sans-serif;
+        color: var(--title-color);
+    }
+    /* box model
+    Modelo de caixa
+    Toda caixa tem
+    largura, altura, espaçamentos, preenchimentos
+    posicionamento, alinhamento
+    bordas, cor, fundo, maneira que é vista pelo html (display)
+    */    
