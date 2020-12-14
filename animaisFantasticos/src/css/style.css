@@ -2,6 +2,13 @@ body, h1, h2, ul, li, p, dd, dt, dl {
     margin: 0px;
     padding: 0px;
   }
+
+html{
+}
+
+html.textMaior{
+  font-size: 160%
+}
   
   img {
     display: block;
