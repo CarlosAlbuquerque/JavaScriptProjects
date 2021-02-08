@@ -4,30 +4,24 @@ function modal(){
     modal.classList.toggle("active");
  }
 
+//pegar e guardar as informações de transaction no Storage
+const Storage = {
+    get() {
+        //json parse vai transformar o array que convertemos para string
+        //no set e transformar em array novamente ou vai retornar um array vazio
+        return JSON.parse(localStorage.getItem('dev.finances:transactions')) || []
+        console.log(localStorage)
+    },
+
+    set(transactions) {
+        localStorage.setItem("dev.finances:transactions", 
+        JSON.stringify(transactions))
+    }
+}
+
 // Operations, soma, sub, total, add, remove
 const Transaction = {
-    all: [
-        {
-        description:'Luz',
-        amount: -50000,
-        date: '01/02/2021'
-        },
-        {
-        description:'Website',
-        amount: 500000,
-        date: '01/02/2021'
-        },
-        {
-        description:'Internet',
-        amount: -20000,
-        date: '01/02/2021'
-        },
-        {
-        description:'APP',
-        amount: 200000,
-        date: '01/02/2021'
-        },
-    ],
+    all: Storage.get(),
 
     add(transaction){
         Transaction.all.push(transaction)
@@ -225,6 +219,9 @@ const App = {
 
         //execução da function de atualizar o Display
             DOM.updateBalance()
+
+        //atualizando o local storage
+            Storage.set(Transaction.all)
     },
     reload(){
         DOM.clearTransactions()
