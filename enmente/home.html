@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+    <title>dev.finance$</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>ENMENTE - Seu diário confiável</h1>
+    </header>
+    <main class="container">
+        <section id='transaction'>
+            <h2>Relatos</h2>
+
+            <a href="#" onclick="modal()" class="button new">
+                + Novo Relato
+            </a>
+            <table id='data-table'>
+                <thead>
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Descrição</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div class="modal-overlay">
+        <div class="modal">
+            <div id="form">
+                <h2>Novo Relato</h2>
+                <form action="" onsubmit = "Form.submit(event)">
+
+                    <div class="input-group">
+                        <label class="sr-only" for="titleReport">Titulo</label>
+                        <input type="text" id="titleReport" name="titleReport" placeholder="Titulo"/>
+                    </div>
+
+                    <div class="input-group"> 
+                        <label class="sr-only" for="description">Descrição</label>
+                        <input type="text" id="description" name="description" placeholder="Descrição"/>
+                        <small class="help">Use o sinal - (negativo) para despesas e, (vírgula) para casas decimais.</small>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="sr-only" for="date">Data</label>
+                        <input type="date" id="date" name="date"/>
+                    </div>
+
+                    <div class="input-group actions">
+                        <a onclick="modal()" class="button cancel">Cancelar</a>
+                        <button>Salvar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>2021 - dev.finance$</footer>
+
+    <script src="./scripts/main.js"></script>
+
+    </body>
+</html>
