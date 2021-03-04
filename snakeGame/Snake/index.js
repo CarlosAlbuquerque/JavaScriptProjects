@@ -4,12 +4,22 @@ import { gameboard } from '../Board/index.js';
 // Velocidade da cobra
 export const snakeSpeed = 4;
 
+let newSegment = 0;
+
 const snakeBody = [
     { x: 11, y: 11 },
 ]
 
 export function update(){
+    addSegments()
     const inputDirection = getInputDirection();
+
+    // fazer mover os segmentos da cobra
+    // loop do penultimo elemento até o primeiro
+    for (let i = snakeBody.length - 2; i >= 0; i--) {
+        //os ... vai dentro do elemento e traz tudo que tem dentro dele, x e o y
+        snakeBody[i + 1] = {...snakeBody[i]};
+    }
 
     // fazer mover a cabeça
     snakeBody[0].x += inputDirection.x;
@@ -41,4 +51,20 @@ export function collision(position){
         // o segmento que esta em loop tanto no x quanto no y, vai retorna  true, um está sobre o outro então colidiu(comeu a fruta).
         return position.x === segment.x && position.y === segment.y;
     })
+}
+
+// expandindo a cobra
+export function expandSnake(amount){
+    newSegment += amount;
+}
+
+function addSegments(){
+    if(newSegment > 0){
+        snakeBody.push({
+            //estamos pegando o ultimo segmento dentro do array e add um novo elemento
+            ...snakeBody[snakeBody.length - 1],
+        });
+
+        newSegment -= 1;
+    }
 }

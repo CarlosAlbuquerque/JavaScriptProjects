@@ -1,5 +1,6 @@
 import { snakeSpeed, draw as snakeDraw, update as snakeUpdate } from './Snake/index.js';
 import { gameboard } from './Board/index.js';
+import { draw as foodDraw, update as foodUpdate} from './Food/index.js'
 
 
 // pegar quanto tempo se passo desde a ultima renderização que a cobrinha andou
@@ -25,10 +26,12 @@ function main(currentTime){
 function update(){
     gameboard.innerHTML = '';
     snakeUpdate();
+    foodUpdate();
 }
 
 function draw(){
     snakeDraw();
+    foodDraw();
 }
 
 window.requestAnimationFrame(main)
