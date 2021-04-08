@@ -16,3 +16,10 @@ export function generateRandomBoardPosition(){
         y: Math.floor(Math.random() * BOARD_SIZE) +1,
     }
 }
+
+// estamos validando se em alguma posição do board 
+// a snake ultrapassou retornando true ou false
+export function isOutsideBoard(position){
+    return position.x > BOARD_SIZE || position.x < 1 || 
+           position.y > BOARD_SIZE || position.y < 1;
+}

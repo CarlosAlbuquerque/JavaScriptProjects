@@ -68,3 +68,20 @@ function addSegments(){
         newSegment -= 1;
     }
 }
+
+// auxiliar functions 
+
+// pegando a cabeça da snake do
+export function getSnakeHead(){
+    return snakeBody[0];
+}
+
+export function hasSelfCollision(){
+    const snakeHead = snakeBody[0];
+
+        return snakeBody.some((segment, index) => {
+            if (index === 0) return false;
+            
+            return snakeHead.x === segment.x && snakeHead.y === segment.y;
+        })
+}
