@@ -4,8 +4,8 @@ let data = [
   {
     id: uuidv4(),
     name: "Pizzaria",
-    "daily-hours": 2,
-    "total-hours": 1,
+    "daily-hours": 5,
+    "total-hours": 20,
     created_at: Date.now(),
   },
 ];
