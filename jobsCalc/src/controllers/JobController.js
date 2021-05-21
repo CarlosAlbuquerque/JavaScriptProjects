@@ -8,17 +8,17 @@ module.exports = {
         return res.render("job")
     },
 
-    save(req, res) {
+    save(req, res) { 
         const jobs = Job.get()
         // req.body = {name: 'Carlos Henrique Albuquerque', 'daily-hours': '12', 'total-hours': '41'}
-        jobs.push({
+        Job.create({
             id: uuidv4(),
             name: req.body.name,
             "daily-hours": req.body["daily-hours"],
             "total-hours": req.body["total-hours"],
             created_at: Date.now() // atribuindo a data de hoje
         })
-    
+        
         return res.redirect('/')
     },
 

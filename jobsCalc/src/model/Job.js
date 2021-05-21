@@ -22,5 +22,8 @@ module.exports = {
     // vai retornar um novo array sem o false
     data = data.filter(job => job.id !== id)
     return data;
+  },
+  create(newJob){
+    data.push(newJob);
   }
 };

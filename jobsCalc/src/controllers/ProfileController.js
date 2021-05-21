@@ -4,6 +4,8 @@ const Profile = require('../model/Profile')
 // module.exports faz com que tudo que tem nele seja exportado
 module.exports = {
     index(req, res){
+        const profile = Profile.get()
+        console.log(profile)
         return res.render("profile", { profile : Profile.get() })
     },
 
