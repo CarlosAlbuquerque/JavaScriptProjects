@@ -36,7 +36,8 @@ const initDb = {
         monthly_budget ,
         hours_per_day ,
         days_per_week ,
-        vacation_per_year 
+        vacation_per_year,
+        value_hour
     ) VALUES(
         "77381f90-7244-4284-861b-e22b8f3eb7d2",
         "Carlos Albuquerque",
@@ -44,7 +45,8 @@ const initDb = {
         4000,
         5,
         7,
-        4
+        4,
+        70
     )`
     );
 

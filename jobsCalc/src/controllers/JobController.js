@@ -8,10 +8,9 @@ module.exports = {
         return res.render("job")
     },
 
-    save(req, res) { 
-        const jobs = Job.get()
+    async save(req, res) { 
         // req.body = {name: 'Carlos Henrique Albuquerque', 'daily-hours': '12', 'total-hours': '41'}
-        Job.create({
+        await Job.create({
             id: uuidv4(),
             name: req.body.name,
             "daily-hours": req.body["daily-hours"],
@@ -22,9 +21,9 @@ module.exports = {
         return res.redirect('/')
     },
 
-    show(req, res){
-        const jobs = Job.get()
-        const profile = Profile.get()
+    async show(req, res){
+        const jobs = await Job.get()
+        const profile = await Profile.get()
         const jobId = req.params.id
 
         // para cada um dos itens do data ele vai rodar uma function 
@@ -41,39 +40,24 @@ module.exports = {
         return res.render("job-edit", { job })
     },
 
-    update(req, res){
-        const jobs = Job.get()
+    async update(req, res){
         const jobId = req.params.id
 
-        const job = jobs.find(job => job.id == jobId)
-
-        if(!job){
-            return res.render('Job not found!')
-        }
-
         const updatedJob = {
-            ...job,
             name: req.body.name,
             "total-hours": req.body["total-hours"],
             "daily-hours": req.body["daily-hours"],
         }
 
-        const newJobs = jobs.map(job =>{
-            if (job.id == jobId) {
-                job = updatedJob
-            }
-            return job
-        })
-
-        Job.update(newJobs)
+        await Job.update(updatedJob, jobId)
 
         res.redirect(`/job/${jobId}`)
     },
 
-    delete(req, res){
+    async delete(req, res){
         const jobId = req.params.id
  
-        Job.delete(jobId)
+        await Job.delete(jobId)
 
         return res.redirect('/')
     }

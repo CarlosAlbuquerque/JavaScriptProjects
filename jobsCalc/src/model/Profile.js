@@ -1,19 +1,40 @@
-
-let data = {
-  name: "Carlos",
-  avatar: "https://github.com/CarlosAlbuquerque.png",
-  "monthly-budget": 4000.0,
-  "hours-per-day": 6,
-  "days-per-week": 5,
-  "vacation-per-year": 4,
-  "value-hour": 75,
-};
+const Database = require('../db/config')
 
 module.exports = {
-    get(){
-        return data;
-    },
-    update(newData){
-      data = newData;
+  async get() {
+
+    const db = await Database();
+
+    const data = await db.get(`SELECT * FROM profile`);
+
+    await db.close();
+
+    // normalização dos dados, passar em vez de "_" o "-" que é o padrão desse projeto
+    return {
+      id: data.id,
+      name: data.name,
+      avatar: data.avatar,
+      "monthly-budget": data.monthly_budget,
+      "days-per-week": data.days_per_week,
+      "hours-per-day": data.hours_per_day,
+      "vacation-per-year": data.vacation_per_year,
+      "value-hour": data.value_hour
+    };
+  },
+    async update(newData){
+      const db = await Database();
+
+      // atualizar perfil setar novo dado
+      db.run(`UPDATE profile SET 
+      name = "${newData.name}",
+      avatar = "${newData.avatar}",
+      monthly_budget = ${newData["monthly-budget"]}, 
+      days_per_week = ${newData["days-per-week"]},
+      hours_per_day = ${newData["hours-per-day"]},
+      vacation_per_year = ${newData["vacation-per-year"]},
+      value_hour = ${newData["value-hour"]}
+      `)
+
+      await db.close();
     }
 }
